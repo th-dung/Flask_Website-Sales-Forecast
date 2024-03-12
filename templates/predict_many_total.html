@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title> Total Many Product</title>
+      <style type="text/css">
+            body {
+                  margin: 0;
+                  background-color: #f6f7f8;
+            }
+
+            .container h3 {
+                  color: #696969;
+                  font-size: -webkit-xxx-large;
+                  font-weight: inherit;
+                  font-family: monospace;
+            }
+            .container {
+                  max-width: 600px;
+                  margin: 20px auto;
+                  background-color: #fff;
+                  padding: 20px;
+                  border-radius: 8px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                  text-align: center;
+            }
+            .centered-element {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+            }
+            
+            /* button */
+            .btn-hover {
+                  width: 100%;
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #fff;
+                  cursor: pointer;
+                  margin-top: 20px;
+                  height: 55px;
+                  text-align: center;
+                  border: none;
+                  background-size: 300% 100%;
+                  border-radius: 50px;
+                  moz-transition: all .4s ease-in-out;
+                  -o-transition: all .4s ease-in-out;
+                  -webkit-transition: all .4s ease-in-out;
+                  transition: all .4s ease-in-out;
+            }
+
+            .btn-hover:hover {
+                  background-position: 100% 0;
+                  moz-transition: all .4s ease-in-out;
+                  -o-transition: all .4s ease-in-out;
+                  -webkit-transition: all .4s ease-in-out;
+                  transition: all .4s ease-in-out;
+            }
+
+            .btn-hover:focus {
+                  outline: none;
+            }
+
+            .btn-hover.color-9 {
+                  background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+                  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+            }
+
+            .upload-form {
+                  background-color: #fff;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                  padding: 20px;
+                  border-radius: 8px;
+                  text-align: center;
+                  width: 400px;
+            }
+            
+            .upload-input {
+                  display: none;
+            }
+            
+            .upload-label {
+                  background-color: white;
+                  border: 1px solid #2980b9;
+                  color: #696969;
+                  padding: 10px 20px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  transition: background-color 0.3s ease;
+                  display: inline-block;
+                  font-weight: inherit;
+                  font-family: monospace;
+            }
+            
+            .upload-label:hover {
+                  background-color: #2980b9;
+                  color: white;
+            }
+            
+            .file-name {
+                  margin-top: 10px;
+            }
+      </style>
+</head>
+
+<body>
+      <div class="container centered-element upload-form">
+            <h3>Dự đoán từ file</h3>
+            <form action="predict_many_total" method="POST" enctype="multipart/form-data">
+                  <label for="file-input" class="upload-label">Chọn file</label>
+                  <input type="file" id="file-input" name="list_data" class="upload-input" accept=".csv">
+                  <div class="file-name" id="file-name"></div>
+                  <input class="btn-hover color-9" type="submit" value="Dự đoán">
+            </form>
+      
+            <script>
+                  document.getElementById('file-input').addEventListener('change', function () {
+                    const fileName = this.value.split('\\').pop();
+                    document.getElementById('file-name').innerText = `File đã chọn: ${fileName}`;
+                  });
+            </script>
+      </div>
+</body>
+</html>
